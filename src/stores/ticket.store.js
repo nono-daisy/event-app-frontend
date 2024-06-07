@@ -57,6 +57,7 @@ export const useTicketStore = defineStore('ticketStore', {
                         Authorization: `Bearer ${getAccessToken()}`
                     }
                 } );
+                this.getAllTickets()
                 this.updatedTicket = {...response.data}
             }catch (e){
                 this.error = e
