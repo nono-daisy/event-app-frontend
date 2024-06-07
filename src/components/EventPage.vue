@@ -38,7 +38,7 @@
   <!-- Product List -->
   <section class="py-10 bg-gray-100">
     <div class="mx-auto grid max-w-6xl  grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      <event-card v-for="item in dummyEvents" :item="item" :key="item.name"/>
+      <event-card v-for="item in eventStore.events" :item="item" :key="item._id"/>
     </div>
   </section>
 
@@ -48,47 +48,13 @@
 </template>
 <script setup>
 import EventCard from "./reusableComponents/EventCard.vue";
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
+import {useEventStore} from "../stores/event.store.js";
 
-const dummyEvents = ref([
-  {
-    name: "Spring Festival",
-    description: "A festival to celebrate the arrival of spring.",
-    start_date: new Date('2024-03-21T00:00:00Z'),
-    end_date: new Date('2024-03-23T23:59:59Z'),
-    created_at: new Date('2023-06-01T10:00:00Z'),
-  },
-  {
-    name: "Tech Conference 2024",
-    description: "Annual technology conference with speakers from around the world.",
-    start_date: new Date('2024-09-10T08:00:00Z'),
-    end_date: new Date('2024-09-12T18:00:00Z'),
-    created_at: new Date('2023-09-15T14:30:00Z'),
-  },
-  {
-    name: "Art Exhibition",
-    description: "Exhibition showcasing contemporary art from local artists.",
-    start_date: new Date('2024-07-01T09:00:00Z'),
-    end_date: new Date('2024-07-15T17:00:00Z'),
-    created_at: new Date('2024-01-10T09:45:00Z'),
-  },
-  {
-    name: "Music Concert",
-    description: "Live concert featuring popular bands and musicians.",
-    start_date: new Date('2024-08-20T18:00:00Z'),
-    end_date: new Date('2024-08-20T22:00:00Z'),
-    created_at: new Date('2024-02-05T16:20:00Z'),
-  },
-  {
-    name: "Charity Gala",
-    description: "Annual charity gala to raise funds for local non-profits.",
-    start_date: new Date('2024-11-05T19:00:00Z'),
-    end_date: new Date('2024-11-05T23:00:00Z'),
-    created_at: new Date(),
-  }
-])
+const eventStore = useEventStore()
 
-
-
+onMounted(()=>{
+  eventStore.getAllEvents()
+})
 
 </script>

@@ -30,7 +30,7 @@ const router = createRouter({
             component: RegistrationFormView
         },
         {
-            path: '/qrCodeScanned',
+            path: '/tickets/:ticket',
             component: ScannedView
         },
         {
@@ -42,7 +42,7 @@ const router = createRouter({
             component: ApprovedListView
         },
         {
-            path: '/registrationList',
+            path: '/tickets',
             component: RegistrationListView
         },
     ]

@@ -79,7 +79,7 @@ export default{
           return
         }
         localStorage.setItem('auth', JSON.stringify(this.authenticationStore.data))
-        this.$router.push('/registrationList')
+        this.$router.push('/')
 
       })
 

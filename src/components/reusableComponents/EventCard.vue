@@ -22,7 +22,7 @@
           <p class="text-sm font-bold text-blue-500">{{ moment(item.start_date).calendar() }}</p>
 
           <div class="flex items-center space-x-1.5 rounded-lg bg-blue-500 px-4 py-1.5 text-white duration-100 hover:bg-blue-600">
-            <button class="text-sm">Get Ticket</button>
+            <router-link :to="`/events/${item._id}`" class="text-sm">Get Ticket</router-link>
           </div>
         </div>
       </div>
