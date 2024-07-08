@@ -20,19 +20,23 @@
         <div class="my-8 text-sm">
           <div class="flex flex-col my-4">
             <label for="email" class="text-gray-700">Email Address</label>
-            <input type="email" name="email" v-model="email" id="email"  required class="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900" placeholder="Enter your email">
+            <input type="email" name="email" v-model="email" id="email"  required  ref="emailInputRef" class="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900" placeholder="Enter your email">
+            <p  v-if="isEmailEmpty" class="text-red-500">Your email is required</p>
+            <p  v-if="isVisible" class="text-red-500">Your email is invalid</p>
+
           </div>
 
           <div class="flex flex-col my-4">
             <label for="password" class="text-gray-700">Password</label>
             <div class="relative flex items-center mt-2">
-              <input :type=" visible ? 'text': 'password' "  v-model="password" name="password" id="password" required class="flex-1 p-2 pr-10 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900" placeholder="Enter your password" type="password">
+              <input :type=" visible ? 'text': 'password' "  v-model="password" name="password" id="password" ref="PasswordInputRef" class="flex-1 p-2 pr-10 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900" placeholder="Enter your password" type="password">
               <button @click="visible = !visible" type="button" class="absolute right-2 bg-transparent flex items-center justify-center text-gray-700">
                 <svg v-show="!visible" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"></path></svg>
 
                 <svg v-show="visible" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display: none;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
               </button>
             </div>
+            <span v-if="isPassWordEmpty" class="text-red-500">Password is required</span>
           </div>
           <div class="flex justify-between ">
             <a href="#" class="text-blue-900 hover:text-blue-900 hover:underline hover:-translate-y-1 duration-500 transition-all">Forgot Password ?</a>
@@ -57,6 +61,9 @@ const router = useRouter()
 export default{
   data(){
     return{
+      isPassWordEmpty: false,
+      isEmailEmpty: false,
+      isVisible:false,
       showPage: false,
       visible: false,
       email: null,
@@ -69,9 +76,46 @@ export default{
     return {authenticationStore}
   },
   methods:{
+    isValidEmail(email) {
+      return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+    },
+    isValidateLogin(){
+      this.isEmailEmpty = false
+      this.isPassWordEmpty = false
+      let result = true
+      if (!this.email){
+        let inputEmail = this.$refs.emailInputRef
+        inputEmail.classList.add(['border-red-500'])
+        this.isEmailEmpty = true
+        result = false
+      }
+      if (this.email) {
+        if (!this.isValidEmail(this.email)) {
+          let inputEmail = this.$refs.emailInputRef
+          inputEmail.classList.add(['border-red-500'])
+          this.isVisible = true
+          result = false
+        }
+      }
+
+      if(!this.password){
+        let inputPasswordCheck = this.$refs.PasswordInputRef
+        inputPasswordCheck.classList.add(['border-red-500'])
+        this.isPassWordEmpty = true
+
+      }
+      return result
+    },
 
     doLogin(){
+      let inputEmail = this.$refs.emailInputRef
+      inputEmail.classList.remove(['border-red-500'])
+      this.isVisible= false
+      if(!this.isValidateLogin()){
 
+        console.log('not valid')
+        return
+      }
       this.authenticationStore.login(this.email, this.password).then(()=>{
         if (this.authenticationStore.error){
           console.log(this.authenticationStore.error)
@@ -79,7 +123,14 @@ export default{
           return
         }
         localStorage.setItem('auth', JSON.stringify(this.authenticationStore.data))
-        this.$router.push('/')
+        const cl = localStorage.getItem('current_link')
+        if (cl){
+          this.$router.push(cl)
+        }
+        else{
+          this.$router.push('/tickets')
+        }
+
 
       })
 

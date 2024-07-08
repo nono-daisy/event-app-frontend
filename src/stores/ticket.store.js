@@ -4,6 +4,7 @@ import getAccessToken from "../utils/token.js";
 export const useTicketStore = defineStore('ticketStore', {
     state: ()=> ({
         createdTicket: null,
+        isVisible:false,
         updatedTicket: null,
         tickets: [],
         scannedTicket: null,
@@ -15,6 +16,7 @@ export const useTicketStore = defineStore('ticketStore', {
         async createTicket(obj, event){
             this.isLoading = true
             this.error = null
+            this.isVisible = false
             try {
                 const url =  `${import.meta.env.VITE_APP_BASE_URL}tickets`
                 const response = await axios.post(url, {...obj, event: event} ,{
@@ -22,6 +24,7 @@ export const useTicketStore = defineStore('ticketStore', {
                         Authorization: `Bearer ${getAccessToken()}`
                     }
                 } );
+                this.isVisible = true
                 this.createdTicket = {...response.data}
             }catch (e){
                 this.error = e

@@ -143,18 +143,20 @@
                   d="M12 13a2 2 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483"
               ></path>
             </svg>
-            <span>{{ ticketStore.scannedTicket?.applicant_name }}</span>
+            <span>{{ ticketStore.scannedTicket?.national_id }}</span>
           </a>
         </nav>
       </div>
       <div aria-label="account-upgrade" class="px-4 py-6">
         <div class="flex items-center space-x-3">
+          <router-link to="/welcome">
           <button
               type="button"
               class="inline-flex px-6 leading-6 py-3 rounded-md bg-blue-50 hover:bg-indigo-50/80 transition-colors duration-200 text-blue-900 font-medium text-lg"
           >
             Exit
           </button>
+          </router-link>
         </div>
       </div>
       <div aria-label="footer" class="pt-2">

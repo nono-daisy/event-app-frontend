@@ -4,7 +4,8 @@ export const useAuthStore = defineStore('authStore', {
     state: ()=> ({
         data: null,
         isLoading: false,
-        error: null
+        error: null,
+        currentLink: null
     }),
     actions: {
         async login(email, password){

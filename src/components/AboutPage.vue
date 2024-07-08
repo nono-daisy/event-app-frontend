@@ -14,11 +14,11 @@
           </button>
         </div>
         <div class=" hidden lg:flex items-center lg:gap-x-12">
-          <a v-for="item in navigation" :key="item.name" :href="item.href" class=" text-sm font-semibold  leading-6 sm:block  dark:text-gray-100 text-blue-900 hover:text-blue-800 hover:font-bold" href="/">{{item.name}}</a>
+          <a v-for="item in navigation" :key="item.name" :href="item.href" class=" text-blue-900 hover:text-blue-800 hover:font-bold" href="/">{{item.name}}</a>
           <!--      <button aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-gray-900 dark:text-gray-100 h-6 w-6"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg></button>-->
         </div>
         <div class="hidden lg:flex ">
-          <a href="/login" class="-mx-3 block rounded-lg px-3 py-2.5 text-base text-blue-900 dark:text-gray-100 hover:text-gray-50 font-semibold leading-7"> Login <span></span><span class="aria-hidden">&rarr;</span></a>
+          <a href="/login" class="-mx-3 block rounded-lg px-3 py-2.5 text-base text-blue-900  hover:text-blue-900 font-semibold leading-7"> Login <span></span><span class="aria-hidden">&rarr;</span></a>
         </div>
 
       </nav>
@@ -41,7 +41,7 @@
                 <a v-for="item in navigation" :key="item.name" :href="item.href" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">{{ item.name }}</a>
               </div>
               <div class="py-6">
-                <a href="/login" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Login</a>
+                <a href="/login" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-blue-900">Login</a>
               </div>
             </div>
           </div>
@@ -67,10 +67,10 @@
                 </div>
                 <div class="category-title flex-1 text-sm">Game</div>
               </div>
-              <div class="title-post font-medium">Mon titre</div>
+              <div class="title-post font-medium">We Offer</div>
 
-              <div class="summary-post text-base text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis veritatis vel suscipit ex dolore possimus iure.
-                <button class="bg-blue-100 text-blue-500 mt-4 block rounded p-2 text-sm "><span class="">Lire plus</span></button>
+              <div class="summary-post text-base text-justify">Step into a world of friendly competition and pure fun with our exhilarating game nights.
+                <button class="bg-blue-100 text-blue-500 mt-4 block rounded p-2 text-sm "><span class="">Enjoy</span></button>
               </div>
 
             </div>
@@ -87,10 +87,10 @@
                 </div>
                 <div class="category-title flex-1 text-sm"> Dance</div>
               </div>
-              <div class="title-post font-medium">Mon titre</div>
+              <div class="title-post font-medium">We offer</div>
 
-              <div class="summary-post text-base text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis veritatis vel suscipit ex dolore possimus iure.
-                <button class="bg-blue-100 text-blue-500 px-2 mt-4 block rounded p-2 text-sm"><span class="">Lire plus</span></button>
+              <div class="summary-post text-base text-justify">the rhythm move you as our talented dancers take the stage.it's a graceful Traditional dance.
+                <button class="bg-blue-100 text-blue-500 px-2 mt-4 block rounded p-2 text-sm"><span class="">Enjoy</span></button>
               </div>
 
             </div>
@@ -107,10 +107,10 @@
                 </div>
                 <div class="category-title flex-1 text-sm">Concert</div>
               </div>
-              <div class="title-post font-medium">Mon titr</div>
+              <div class="title-post font-medium">We offer</div>
 
-              <div class="summary-post text-base text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis veritatis vel suscipit ex dolore possimus iure.
-                <button class="bg-blue-100 text-blue-500 px-2 mt-4 block rounded p-2 text-sm"><span class="">Lire plus</span></button>
+              <div class="summary-post text-base text-justify">Lose yourself in the music with our electrifying concert experiences,with Best performance.
+                <button class="bg-blue-100 text-blue-500 px-2 mt-4 block rounded p-2 text-sm"><span class="">Enjoy</span></button>
               </div>
 
             </div>
@@ -119,13 +119,13 @@
         </div>
       </div>
     </section>
-    <hr class="my-6 border-gra dark:border-gray-700" />
+    <hr class="my-6 border-gra " />
     <footer class="container px-8 py-10 mx-auto">
       <div class="  flex flex-col items-center sm:flex-row sm:justify-between">
         <p class="text-sm text-gray-500">© Right  2024. BK-Arena Event System .</p>
 
         <div class="flex mt-3 -mx-2 sm:mt-0">
-          <a href="/about" class=" font-semibold mx-2 text-sm text-gray-500 transition-colors duration-300 hover:text-[#00A4E4 dark:hover:text-gray-200" aria-label="Reddit">Kubindi bisobanuro</a>
+          <a href="/about" class=" font-semibold mx-2 text-sm text-gray-500 transition-colors duration-300 hover:text-[#00A4E4 " aria-label="Reddit">For More Information</a>
 
           <!--                   <a href="#" class=" font-semibold mx-2 text-sm text-gray-500 transition-colors duration-300 hover:text-[#00A4E4] dark:hover:text-gray-200" aria-label="Reddit"> Privacy </a>-->
 
