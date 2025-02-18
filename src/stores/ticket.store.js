@@ -8,6 +8,8 @@ export const useTicketStore = defineStore('ticketStore', {
         updatedTicket: null,
         tickets: [],
         scannedTicket: null,
+        rejectTicket:[],
+        approveTicket:[],
         isLoading: false,
         error: null
     }),

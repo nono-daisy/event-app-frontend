@@ -33,9 +33,11 @@
                     <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
                       Phone number
                     </th>
-
-                    <th scope="col" class="relative py-3.5 px-4">
-                      <span class="sr-only">Actions</span>
+                    <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                      Age
+                    </th>
+                    <th scope="col" class="px-4 hover:bg-red-50 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                      <span class="text-green-500 transition-colors">Actions</span>
                     </th>
                   </tr>
                   </thead>
@@ -76,6 +78,7 @@
                       </div>
                     </td>
                     <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">{{ ticket?.phone }}</td>
+                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">{{ticket?.age}}</td>
                     <td class="px-4 py-4 text-sm whitespace-nowrap">
                       <div class="flex items-center gap-x-6">
 <!--                        <button class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">-->
