@@ -118,7 +118,7 @@
                 required
                 aria-required="true"
                 v-model="ticketData.phone"
-                placeholder="+250"
+                placeholder="Enter valid format Phone number(e.g 078)"
                 :class="['w-full rounded-md border bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:shadow-md',
                         errors.phone ? 'border-red-500' : 'border-[#e0e0e0] focus:border-[#6A64F1]']"
                 @blur="validateField('phone')"
